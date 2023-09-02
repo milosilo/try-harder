@@ -100,8 +100,4 @@ This project is under the MIT License.
 
 - Created by: [milosilo.com](https://milosilo.com)
 - Twitter: [@milosilo_hacks](https://twitter.com/milosilo_hacks)
-- For more Cyber Security retro games, visit [milosilo GitHub](https://github.com/milosilo)
 
----
-
-Feel free to use this README for your GitHub repository for the "Try Harder" game. Would you like to add or modify anything else? 😄
