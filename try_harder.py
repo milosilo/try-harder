@@ -2,13 +2,13 @@
 from colorama import Fore, Back, Style, init
 import time
 import inspect
+import os
 
 # Initialize colorama
 init()
 
-# Initialize points and save points
-points = 0
-save_point = 0
+# Declare current_level as global 
+current_level = 0  # Declare at the top of your script
 
 # Function to display the title screen
 def display_title_screen():
@@ -23,7 +23,7 @@ def display_title_screen():
 def title_screen():
     global points
     global save_point
-    print("Current Host:", save_point)
+    print("Current Host:", current_level)
     print("Points:", points)
     print(Fore.CYAN + "========================================================================" + Style.RESET_ALL)
     choice = input("Type 'reset' to reset the game or press Enter to continue: ")
@@ -2024,6 +2024,8 @@ def host_one_hundred():
 def save_progress(current_level):
     with open("game_save.txt", "w") as f:
         f.write(str(current_level))
+        print("saving game")
+        f.close()
 
 def load_progress():
     if os.path.exists("game_save.txt"):
@@ -2037,26 +2039,56 @@ def reset_game():
         
 # Main function to run the game
 def main():
-    display_title_screen()
-    title_screen()
+    # Initialize variables
+    global points
+    points = 0
+    global current_level  # Access the global variable inside main()
+    current_level = load_progress()  # Load progress at the beginning of the game
+
     host_functions = [
-host_one,host_two,host_three,host_four,host_five,host_six,host_seven,host_eight,host_nine,host_ten, host_eleven,host_twelve,host_thirteen,host_fourteen,host_fifteen,host_sixteen,host_seventeen,host_eighteen,host_nineteen,host_twenty, host_twenty_one,host_twenty_two,host_twenty_three,host_twenty_four,host_twenty_five,host_twenty_six,host_twenty_seven,host_twenty_eight,host_twenty_nine,host_thirty, host_ninety_one,host_ninety_two,host_ninety_three,host_ninety_four,host_ninety_five,host_ninety_six,host_ninety_seven,host_ninety_eight,host_ninety_nine,host_one_hundred
+    host_one, host_two, host_three, host_four, host_five,
+    host_six, host_seven, host_eight, host_nine, host_ten,
+    host_eleven, host_twelve, host_thirteen, host_fourteen, host_fifteen,
+    host_sixteen, host_seventeen, host_eighteen, host_nineteen, host_twenty,
+    host_twenty_one, host_twenty_two, host_twenty_three, host_twenty_four, host_twenty_five,
+    host_twenty_six, host_twenty_seven, host_twenty_eight, host_twenty_nine, host_thirty,
+    host_thirty_one, host_thirty_two, host_thirty_three, host_thirty_four, host_thirty_five,
+    host_thirty_six, host_thirty_seven, host_thirty_eight, host_thirty_nine, host_forty,
+    host_forty_one, host_forty_two, host_forty_three, host_forty_four, host_forty_five,
+    host_forty_six, host_forty_seven, host_forty_eight, host_forty_nine, host_fifty,
+    host_fifty_one, host_fifty_two, host_fifty_three, host_fifty_four, host_fifty_five,
+    host_fifty_six, host_fifty_seven, host_fifty_eight, host_fifty_nine, host_sixty,
+    host_sixty_one, host_sixty_two, host_sixty_three, host_sixty_four, host_sixty_five,
+    host_sixty_six, host_sixty_seven, host_sixty_eight, host_sixty_nine, host_seventy,
+    host_seventy_one, host_seventy_two, host_seventy_three, host_seventy_four, host_seventy_five,
+    host_seventy_six, host_seventy_seven, host_seventy_eight, host_seventy_nine, host_eighty,
+    host_eighty_one, host_eighty_two, host_eighty_three, host_eighty_four, host_eighty_five,
+    host_eighty_six, host_eighty_seven, host_eighty_eight, host_eighty_nine, host_ninety,
+    host_ninety_one, host_ninety_two, host_ninety_three, host_ninety_four, host_ninety_five,
+    host_ninety_six, host_ninety_seven, host_ninety_eight, host_ninety_nine, host_one_hundred
 ]
 
-    for i, host_function in enumerate(host_functions):
-        if i < save_point:
-            continue
-        host_function()
+    display_title_screen()
+    title_screen()
+
+    # Load or initialize current_level
+    current_level = load_progress()
+
+    print(f"Current level: {current_level}, Number of hosts: {len(host_functions)}")
 
     while current_level < len(host_functions):
         print(f"Starting Level {current_level + 1}")
-        points = host_functions[current_level](points)  # Call the function for the current host and update points
+        
+        # Execute the current host function
+        host_functions[current_level]()
+        # Move to the next level
+        current_level += 1
         
         # Save progress
+        print("Before saving progress.")
         save_progress(current_level)
-        
-        # Move to next level
-        current_level += 1
+        print("After saving progress.")
+
 # Run the game
 if __name__ == "__main__":
     main()
